@@ -5,6 +5,7 @@ import LinkBlot from '../formats/link.js';
 import { Range } from '../core/selection.js';
 import icons from '../ui/icons.js';
 import Quill from '../core/quill.js';
+import SciSymbolPalette from '../ui/scisymbol-palette.js';
 import type { Context } from '../modules/keyboard.js';
 import type Toolbar from '../modules/toolbar.js';
 import type { ToolbarConfig } from '../modules/toolbar.js';
@@ -14,6 +15,7 @@ const TOOLBAR_CONFIG: ToolbarConfig = [
   [{ header: ['1', '2', '3', false] }],
   ['bold', 'italic', 'underline', 'link'],
   [{ list: 'ordered' }, { list: 'bullet' }],
+  ['scisymbol'],
   ['clean'],
 ];
 
@@ -92,6 +94,8 @@ class SnowTooltip extends BaseTooltip {
 }
 
 class SnowTheme extends BaseTheme {
+  scisymbolPalette?: SciSymbolPalette;
+
   constructor(quill: Quill, options: ThemeOptions) {
     if (
       options.modules.toolbar != null &&
@@ -118,7 +122,18 @@ class SnowTheme extends BaseTheme {
           },
         );
       }
+      const scisymbolButton = toolbar.container.querySelector('.ql-scisymbol');
+      if (scisymbolButton instanceof HTMLButtonElement) {
+        this.scisymbolPalette = new SciSymbolPalette(
+          this.quill,
+          scisymbolButton,
+        );
+      }
     }
+  }
+
+  toggleSciSymbolPalette() {
+    this.scisymbolPalette?.toggle();
   }
 }
 SnowTheme.DEFAULTS = merge({}, BaseTheme.DEFAULTS, {

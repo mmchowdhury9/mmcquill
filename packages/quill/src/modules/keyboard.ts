@@ -23,8 +23,9 @@ export interface Context {
   line: BlockEmbed | BlockBlot;
 }
 
-interface BindingObject
-  extends Partial<Omit<Context, 'prefix' | 'suffix' | 'format'>> {
+interface BindingObject extends Partial<
+  Omit<Context, 'prefix' | 'suffix' | 'format'>
+> {
   key: number | string | string[];
   shortKey?: boolean | null;
   shiftKey?: boolean | null;

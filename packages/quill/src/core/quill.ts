@@ -66,8 +66,10 @@ export interface QuillOptions {
  * Similar to QuillOptions, but with all properties expanded to their default values,
  * and all selectors resolved to HTMLElements.
  */
-export interface ExpandedQuillOptions
-  extends Omit<QuillOptions, 'theme' | 'formats'> {
+export interface ExpandedQuillOptions extends Omit<
+  QuillOptions,
+  'theme' | 'formats'
+> {
   theme: ThemeConstructor;
   registry: Parchment.Registry;
   container: HTMLElement;
