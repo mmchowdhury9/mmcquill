@@ -213,6 +213,14 @@ BaseTheme.DEFAULTS = merge({}, Theme.DEFAULTS, {
           }
           fileInput.click();
         },
+        scisymbol() {
+          const theme = this.quill.theme as {
+            toggleSciSymbolPalette?: () => void;
+          };
+          if (typeof theme.toggleSciSymbolPalette === 'function') {
+            theme.toggleSciSymbolPalette();
+          }
+        },
         video() {
           this.quill.theme.tooltip.edit('video');
         },

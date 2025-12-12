@@ -75,6 +75,7 @@ export default {
     sub: subscriptIcon,
     super: superscriptIcon,
   },
+  scisymbol: 'α',
   strike: strikeIcon,
   table: tableIcon,
   underline: underlineIcon,
